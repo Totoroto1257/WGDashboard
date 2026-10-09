@@ -1,0 +1,15 @@
+name: Copy Original Releases
+
+on:
+  workflow_dispatch: # Позволяет запустить процесс вручную кнопкой
+
+jobs:
+  copy-releases:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone GitHub Releases
+        uses: andrewthetechie/gha-clone-releases@v1.2.1  # Проверенный плагин для копирования релизов
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          src_repo: "WGDashboard/WGDashboard"  # Откуда копировать
+          # dest_repo по умолчанию подставит ваш текущий форк
